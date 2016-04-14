@@ -22,7 +22,7 @@ OR
   c) Once the character is found, append a space. Repeat until message is done.
   
   
-OR We can use a map.
+ORR We can use a map.
 
 1) While reading from a file... (easy)
 2) Use the letter as the key and a string of dots/dashes as the value. (easy)
