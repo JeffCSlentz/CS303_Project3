@@ -84,6 +84,13 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Q:\Downloads\Binary_Trees_Binary_Search_Trees\Binary_Trees_Binary_Search_Trees\Binary_Search_Tree.h" />
+    <ClInclude Include="Q:\Downloads\Binary_Trees_Binary_Search_Trees\Binary_Trees_Binary_Search_Trees\Binary_Tree.h" />
+    <ClInclude Include="Q:\Downloads\Binary_Trees_Binary_Search_Trees\Binary_Trees_Binary_Search_Trees\BTNode.h" />
+    <ClInclude Include="Q:\Downloads\Binary_Trees_Binary_Search_Trees\Binary_Trees_Binary_Search_Trees\String_Tokenizer.h" />
+    <ClInclude Include="Q:\Downloads\Binary_Trees_Binary_Search_Trees\Binary_Trees_Binary_Search_Trees\Syntax_Error.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
