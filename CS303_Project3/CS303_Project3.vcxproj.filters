@@ -28,19 +28,22 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Q:\Downloads\Binary_Trees_Binary_Search_Trees\Binary_Trees_Binary_Search_Trees\Binary_Search_Tree.h">
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Binary_Tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Q:\Downloads\Binary_Trees_Binary_Search_Trees\Binary_Trees_Binary_Search_Trees\Syntax_Error.h">
+    <ClInclude Include="Binary_Search_Tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Q:\Downloads\Binary_Trees_Binary_Search_Trees\Binary_Trees_Binary_Search_Trees\String_Tokenizer.h">
+    <ClInclude Include="BTNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Q:\Downloads\Binary_Trees_Binary_Search_Trees\Binary_Trees_Binary_Search_Trees\BTNode.h">
+    <ClInclude Include="String_Tokenizer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Q:\Downloads\Binary_Trees_Binary_Search_Trees\Binary_Trees_Binary_Search_Trees\Binary_Tree.h">
+    <ClInclude Include="Syntax_Error.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
