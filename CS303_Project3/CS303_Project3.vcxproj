@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Q:\Downloads\Binary_Trees_Binary_Search_Trees\Binary_Trees_Binary_Search_Trees\BinaryTreeApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -91,6 +92,7 @@
     <ClInclude Include="Binary_Search_Tree.h" />
     <ClInclude Include="Binary_Tree.h" />
     <ClInclude Include="BTNode.h" />
+    <ClInclude Include="Morse_Data.h" />
     <ClInclude Include="String_Tokenizer.h" />
     <ClInclude Include="Syntax_Error.h" />
   </ItemGroup>
