@@ -26,9 +26,6 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Q:\Downloads\Binary_Trees_Binary_Search_Trees\Binary_Trees_Binary_Search_Trees\BinaryTreeApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

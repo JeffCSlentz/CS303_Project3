@@ -9,6 +9,7 @@
 using namespace std;
 
 void decode(string, map<string, string>&); // prints out the decoded message; Pass in a coded word and the appropriate map
+void encode(string character, map<string, string>&encode_map);
 
 //Added 4-28 by Jeff. Makes a Binary tree that represents the data.
 Binary_Tree<Morse_Data> buildDecodeTree();
@@ -38,6 +39,9 @@ void main(){
 	
 	fin2.close();						//Close the file.
 
+	encode("ant", encodemap);
+	encode("meshuggah", encodemap);
+
 
 	decode(" ___ __ . __. ._", decodemap);
 	decode("     _._.     ._ _    ", decodemap);
@@ -48,6 +52,19 @@ void main(){
 	decode("", decodemap);				// Decode will respond improperly if non-existent codes are passed. (blank codes are fine)
 	system("pause");
 	return;
+}
+
+void encode(string character, map<string, string>&encode_map) {
+	int index = 0;
+	string letter;
+	cout << "Encoding " << character << '\n';
+	while (index < character.size()) {
+		letter += character[index];
+		cout << "letter: " << character[index] << " " << encode_map[letter] << " \n";
+		letter.clear();
+		index++;
+	}
+	cout << '\n';
 }
 
 void decode(string code, map<string, string>& decode_map)
