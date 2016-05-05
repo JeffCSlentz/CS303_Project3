@@ -10,7 +10,7 @@ using namespace std;
 
 void decode(string, map<string, string>&); // prints out the decoded message; Pass in a coded word and the appropriate map
 void encode(string character, map<string, string>&encode_map);
-
+char findcharacter(string charcode, BTNode<Morse_Data>* root, int);
 //Added 4-28 by Jeff. Makes a Binary tree that represents the data.
 //Binary_Tree<Morse_Data> buildDecodeTree(Binary_Tree<Morse_Data> decodeTree);
 void buildDecodeTree(Binary_Tree<Morse_Data> decodeTree);
@@ -47,13 +47,13 @@ void main(){
 	encode("meshuggah", encodemap);
 
 
-	decode(" ___ __ . __. ._", decodemap);
-	decode("     _._.     ._ _    ", decodemap);
-	decode(" .. ...", decodemap);
-	decode(" .... ._ ._. _... .. _. __. . ._.", decodemap);
-	decode(" ___ .._.", decodemap);
-	decode("_.. . ... _ ._. .._ _._. _ .. ___ _. ", decodemap);
-	decode("", decodemap);				// Decode will respond improperly if non-existent codes are passed. (blank codes are fine)
+	decode(" ___ __ . __. ._", decodeTree);
+	decode("     _._.     ._ _    ", decodeTree);
+	decode(" .. ...", decodeTree);
+	decode(" .... ._ ._. _... .. _. __. . ._.", decodeTree);
+	decode(" ___ .._.", decodeTree);
+	decode("_.. . ... _ ._. .._ _._. _ .. ___ _. ", decodeTree);
+	decode("", decodeTree);				// Decode will respond improperly if non-existent codes are passed. (blank codes are fine)
 	system("pause");
 	return;
 }
@@ -71,7 +71,7 @@ void encode(string character, map<string, string>&encode_map) {
 	cout << '\n';
 }
 
-void decode(string code, map<string, string>& decode_map)
+void decode(string code, Binary_Tree<Morse_Data>& decode_tree)
 {
 	code += " "; // Remedy for bug: function ignores the last element of the string. This goes around that (instead of actually fixing it).
 	string message;
@@ -86,11 +86,15 @@ void decode(string code, map<string, string>& decode_map)
 				continue; // Only decode the character data if data exists. 
 			}
 			else if (index == code.size() && character.size() > 0){	// Special Case: Ending of string may not terminate with space.
-				message += decode_map[character];
+				if (character[0] == '_')
+					message += findcharacter(character, decode_tree.getRoot(), 0);
+				else message += findcharacter(character, decode_tree.getRoot(), 0);
 				character.clear();
 			}
 			else {						// If code is space, decode character data into message, then clear character data
-				message += decode_map[character];
+				if (character[0] == '_')
+					message += findcharacter(character, decode_tree.getRoot(), 0);
+				else message += findcharacter(character, decode_tree.getRoot(), 0);
 				character.clear();
 			}
 		}
@@ -106,8 +110,17 @@ void decode(string code, map<string, string>& decode_map)
 		cout << "No message found\n";
 	return;
 }
-
-
+char findcharacter(string charcode, BTNode<Morse_Data>* root, int index = 0){
+	//string hands = "Left";
+	string currentcode = root->data.code;
+	if (currentcode == charcode)
+		return root->data.letter;
+	else{
+		if (charcode[index] == '_')
+			return findcharacter(charcode, root->right, ++index);
+		else return findcharacter(charcode, root->left, ++index);
+	}
+}
 //Makes a binary tree, assuming there's a file called 'mores.txt' filled with appropriately formatted text
 void buildDecodeTree(Binary_Tree<Morse_Data> decodeTree){
 	//Open the input file.
