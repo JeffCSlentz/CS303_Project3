@@ -12,15 +12,19 @@ void decode(string, map<string, string>&); // prints out the decoded message; Pa
 void encode(string character, map<string, string>&encode_map);
 
 //Added 4-28 by Jeff. Makes a Binary tree that represents the data.
-Binary_Tree<Morse_Data> buildDecodeTree();
+//Binary_Tree<Morse_Data> buildDecodeTree(Binary_Tree<Morse_Data> decodeTree);
+void buildDecodeTree(Binary_Tree<Morse_Data> decodeTree);
 void insertMorseNode(const Morse_Data& MD, vector<char>& vec, int i, BTNode<Morse_Data>* currentRoot);
 
 void main(){
 
 	//Build the binary tree and save it as decodeTree.
-	Binary_Tree<Morse_Data> decodeTree = buildDecodeTree();
+	Binary_Tree<Morse_Data> decodeTree = Binary_Tree<Morse_Data>();
+	BTNode<Morse_Data> theRoot = BTNode<Morse_Data>(Morse_Data('0', "0"));
+	decodeTree.setRoot(&theRoot);
+	buildDecodeTree(decodeTree);
 
-	string buffer;
+	string buffer1;
 	string character;
 	string code;
 
@@ -28,17 +32,17 @@ void main(){
 	map<string, string> decodemap;		//This map is for decoding.
 
 	ifstream fin2("mores.txt");
-	while (fin2 >> buffer){				//Read in a string from the file (separated by space or newline).
+	while (fin2 >> buffer1){				//Read in a string from the file (separated by space or newline).
 
-		character = buffer[0];			//The character is the first index.
-		code = string(buffer, 1);		//The code is the second index to the end of buffer.
+		character = buffer1[0];			//The character is the first index.
+		code = string(buffer1, 1);		//The code is the second index to the end of buffer.
 
 		encodemap[character] = code;	//Write into encodemap: (key = char, value = code);
 		decodemap[code] = character;	//Write into decodemap: (key = code, value = char);
 	}
 	
 	fin2.close();						//Close the file.
-
+	
 	encode("ant", encodemap);
 	encode("meshuggah", encodemap);
 
@@ -105,14 +109,14 @@ void decode(string code, map<string, string>& decode_map)
 
 
 //Makes a binary tree, assuming there's a file called 'mores.txt' filled with appropriately formatted text
-Binary_Tree<Morse_Data> buildDecodeTree(){
+void buildDecodeTree(Binary_Tree<Morse_Data> decodeTree){
 	//Open the input file.
 	ifstream fin("mores.txt");			
 
 	//Create the decodeTree with the main root. (Has dummy data in it)
-	Binary_Tree<Morse_Data> decodeTree = Binary_Tree<Morse_Data>();
-	BTNode<Morse_Data> theRoot = BTNode<Morse_Data>(Morse_Data('0', "0"));
-	decodeTree.setRoot(&theRoot);
+	//Binary_Tree<Morse_Data> decodeTree = Binary_Tree<Morse_Data>();
+	//BTNode<Morse_Data> theRoot = BTNode<Morse_Data>(Morse_Data('0', "0"));
+	//decodeTree.setRoot(&theRoot);
 
 	//String to hold text from the file.
 	string temp_Buffer;
@@ -135,13 +139,13 @@ Binary_Tree<Morse_Data> buildDecodeTree(){
 		//Initialize a counter.
 		int i = 0;
 		//Call this monster
-		insertMorseNode(current_MD, vec, i, &theRoot);
+		insertMorseNode(current_MD, vec, i, decodeTree.getRoot());
 	}
 
 	//Close your files yo
 	fin.close();
 	
-	return decodeTree;
+	return;
 }
 
 //Recursive function that reads a vector of chars to determine where to make a new node with it's Morse_data.
