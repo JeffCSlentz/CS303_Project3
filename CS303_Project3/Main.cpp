@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void decode(string, map<string, string>&); // prints out the decoded message; Pass in a coded word and the appropriate map
+void decode(string, Binary_Tree<Morse_Data> decode_tree); // prints out the decoded message; Pass in a coded word and the appropriate map
 void encode(string character, map<string, string>&encode_map);
 char findcharacter(string charcode, BTNode<Morse_Data>* root, int);
 //Added 4-28 by Jeff. Makes a Binary tree that represents the data.
@@ -24,7 +24,7 @@ void main(){
 	decodeTree.setRoot(&theRoot);
 	buildDecodeTree(decodeTree);
 
-	string buffer1;
+	string buffer;
 	string character;
 	string code;
 
@@ -32,10 +32,10 @@ void main(){
 	map<string, string> decodemap;		//This map is for decoding.
 
 	ifstream fin2("mores.txt");
-	while (fin2 >> buffer1){				//Read in a string from the file (separated by space or newline).
+	while (fin2 >> buffer){				//Read in a string from the file (separated by space or newline).
 
-		character = buffer1[0];			//The character is the first index.
-		code = string(buffer1, 1);		//The code is the second index to the end of buffer.
+		character = buffer[0];			//The character is the first index.
+		code = string(buffer, 1);		//The code is the second index to the end of buffer.
 
 		encodemap[character] = code;	//Write into encodemap: (key = char, value = code);
 		decodemap[code] = character;	//Write into decodemap: (key = code, value = char);
@@ -71,7 +71,7 @@ void encode(string character, map<string, string>&encode_map) {
 	cout << '\n';
 }
 
-void decode(string code, Binary_Tree<Morse_Data>& decode_tree)
+void decode(string code, Binary_Tree<Morse_Data> decode_tree)
 {
 	code += " "; // Remedy for bug: function ignores the last element of the string. This goes around that (instead of actually fixing it).
 	string message;
